@@ -13,7 +13,7 @@ function checksExistsUserAccount(request, response, next) {
   const { username } = request.headers;
   
   if(!username){
-    return response.send(400).json({error: "Username was not informed"});
+    return response.status(400).json({error: "Username was not informed"});
   }
 
   const userFound = users.find(
@@ -21,7 +21,7 @@ function checksExistsUserAccount(request, response, next) {
   );
 
   if(!userFound){
-    return response.sent(404).json({error: "User not found"});
+    return response.status(404).json({error: "User not found"});
   }
 
   request.user = userFound;
